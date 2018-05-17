@@ -1,4 +1,4 @@
-# SRATOR (A tool for Splitting Read and Assembly TO Referece genome)
+# TSRATOR (Tools for Splitting Read and Assembly TO Referece genome)
 
 This is a tool for splitting sequencing reads and assembled scaffolds (or contigs)
 to groups of reference genome's choromosomes (or scaffolds). 
@@ -9,6 +9,21 @@ NOTE
 ----
 
 The species of reference genome must be same or at least very closely related one.
+
+Requirement
+-----------
+
+c++11 (or later): Required to compile
+
+lastz (https://github.com/lastz/lastz.git)
+
+lastz_analysis (https://github.com/sohnjangil/lastz_analysis.git)
+
+samtools (https://github.com/samtools/samtools.git)
+
+BWA (https://github.com/lh3/bwa.git)
+
+Alternatively, BOWTIE (for short-reads), NGMLR, or BLASR (for long-reads) can be used.
 
 Install
 -------
@@ -42,6 +57,7 @@ bwa mem scaffolds.fa MP_1.fq MP_2.fq > MP.sam
 bwa mem -x pacbio scaffolds.fa PacBio.fa(or .fq) > PacBio.sam
 ```
 You can use bowtie if only short-reads are used.
+You may use other mapper such as ngmlr, blasr, or others generating sam files.
 Though .sam file(s) is generated in this example, you may convert it to .bam file(s) using samtools.
 Note: We do not recommand to sort .bam.
 
