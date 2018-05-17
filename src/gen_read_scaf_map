@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [[ "${1}" == "" ]]
+then
+    echo "USAGE: gen_read_scaf_map  (sam or bam)  >  output"
+else
+    
+    filename=$1
+    
+    if [ -f $filename ]
+    then
+	pre=${filename%.sam}
+	suf=${filename#${pre}}  
+	if [ "$suf" == ".sam" ]
+	then
+	    samtools view -S $filename | awk '{if ($3!="*") print $1 "\t" $3 }' | uniq
+	else
+	    if [ "$suf" == ".bam" ]
+	    then
+		samtools view $filename | awk '{if ($3!="*") print $1 "\t" $3 }' | uniq
+	    else
+		echo "ERROR: Input file must be in .sam or .bam format: " $filename >&2
+	    fi
+	fi
+    else
+	echo "ERROR: File not exist: " $filename >&2
+    fi
+fi
+
