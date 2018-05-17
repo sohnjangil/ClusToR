@@ -45,7 +45,9 @@ How to use it
 0) Prepare
 
 Assembled scaffolds (or contigs)
+
 Reference genome (same or closely related species' genome)
+
 Sequencing reads (Mate-pair (MP) or long-read (such as PacBio))
 
 1) Mapping reads to scaffolds
@@ -59,6 +61,7 @@ bwa mem -x pacbio scaffolds.fa PacBio.fa(or .fq) > PacBio.sam
 You can use bowtie if only short-reads are used.
 You may use other mapper such as ngmlr, blasr, or others generating sam files.
 Though .sam file(s) is generated in this example, you may convert it to .bam file(s) using samtools.
+
 Note: We do not recommand to sort .bam.
 
 2) Mapping scaffolds to genome
@@ -70,12 +73,14 @@ lastz genome.fa scaffolds.fa[multiple] --format=general --ambigous=iupac --step=
 You can modify options or use other options, but we recommand do not use "--chain" or "--gapped" options, by which options some scaffolds (or contigs) can be missed in lastz mapping.
 
 If there are lots of repeats in assembled scaffolds or reference genome, lastz mapping can take too much time. In the case, you can do in multi-thread-like manner by dividing a scaffold file to several files as follows.
+
 If you want to divide scaffolds.fa to 30 files, do
 ```
 fasta_divider  scaffolds.fa  30
 ```
 It will divide scaffolds.fa to scaffolds.fa.1, scaffolds.fa.2,...,scaffols.fa.30
-Then, you can map each file to genome using a simple script
+Then, you can map each file to genome using a simple script.
+
 Example of a shell-script file
 ```
 option="--format=general --ambigous=iupac --step=10000"
@@ -90,6 +95,7 @@ cat scaffolds.lastz.* > scaffolds.lastz
 3) Generate ".map" files
 
 Sequencing-reads to scaffolds map file
+
 Example
 ```
 gen_read_scaf_map  MP.sam (or MP.bam)  >  MP2scaf.map
@@ -97,6 +103,7 @@ gen_read_scaf_map  PacBio.sam (or PacBio.bam)  >  PacBio2scaf.map
 ```
 
 Scaffolds to reference map file
+
 Example
 ```
 lastz_analysis -i scaffolds.lastz
@@ -106,6 +113,7 @@ find_major_target  scaffolds.lastz.map2target > scaf2target.map
 4) Make target list file
 
 Make a target list file as follows.
+
 If there are chromosomes 1-12, X, and MT, then 
 ```
 echo 1 2 3 4 5 6 7 8 9 10 11 12 X MT > target.list
@@ -172,4 +180,11 @@ Contact
 -------
 
 Jang-il Sohn
-sohnjangil@gmail.com# tsrator
+
+sohnjangil@gmail.com
+
+Bioinformatics and Genomics Lab.
+
+Hanyang University
+Seoul
+Korea
