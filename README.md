@@ -1,4 +1,4 @@
-# ClusTo-RC (Clustering Tool for Read and Contigs)
+# ClusToR (Clustering Tool for Reference assisted de novo assembly)
 
 This is a tool for clustering sequencing reads and assembled scaffolds (or contigs)
 to groups of reference genome's choromosomes (or scaffolds). 
