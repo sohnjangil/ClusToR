@@ -1,4 +1,4 @@
-# TSRATOR (Tools for Splitting Read and Assembly TO Referece genome)
+# TSRATOR (Tools for Splitting Read and Assembly TO Reference genome)
 
 This is a tool for splitting sequencing reads and assembled scaffolds (or contigs)
 to groups of reference genome's choromosomes (or scaffolds). 
