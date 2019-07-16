@@ -1,6 +1,6 @@
-# TSRATOR (Tools for Splitting Read and Assembly TO Reference genome)
+# ClusTo-RC (Clustering Tool for Read and Contigs)
 
-This is a tool for splitting sequencing reads and assembled scaffolds (or contigs)
+This is a tool for clustering sequencing reads and assembled scaffolds (or contigs)
 to groups of reference genome's choromosomes (or scaffolds). 
 
 This tool can help to assembly more accurate and long scaffolds by reducing topological complexity in each group.
